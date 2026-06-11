@@ -1,0 +1,2 @@
+    PLUGIN_STATE_TYPE=branch
+    PLUGIN_DESIRED_STATE=local
