@@ -15,24 +15,24 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information for the multi-answer question type.
+ * Tasks definition for auth_oauth2
  *
- * @package    qtype
- * @subpackage multianswer
- * @copyright  1999 onwards Martin Dougiamas  {@link http://moodle.com}
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package   auth_oauth2
+ * @copyright 2026 eDaktik GmbH {@link https://www.edaktik.at/}
+ * @author    Christian Abila <christian.abila@edaktik.at>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'qtype_multianswer';
-$plugin->version   = 2026042001;
-
-$plugin->requires  = 2026041000;
-$plugin->dependencies = [
-    'qtype_multichoice' => 2026041000,
-    'qtype_numerical'   => 2026041000,
-    'qtype_shortanswer' => 2026041000,
+$tasks = [
+    [
+        'classname' => '\auth_oauth2\task\delete_expired_confirmation_tokens',
+        'blocking' => 0,
+        'minute' => 'R',
+        'hour' => 'R',
+        'day' => '*',
+        'month' => '*',
+        'dayofweek' => '*',
+    ],
 ];
-
-$plugin->maturity  = MATURITY_STABLE;
