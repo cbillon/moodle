@@ -22,6 +22,14 @@ The format of this change log follows the advice given at [Keep a CHANGELOG](htt
 
   For more information see [MDL-88805](https://tracker.moodle.org/browse/MDL-88805)
 
+### block_myoverview
+
+#### Changed
+
+- For the correct display of title and context menus, fields like fullname are returned with numeric HTML entities (&#60;) instead of named entities (&lt;) and unencoded quotes.
+
+  For more information see [MDL-79755](https://tracker.moodle.org/browse/MDL-79755)
+
 ### core\task\adhoc_task
 
 #### Added
@@ -37,6 +45,14 @@ The format of this change log follows the advice given at [Keep a CHANGELOG](htt
 - Added adhoc_task_delayed() method to allow an adhoc task to be retried after a delay without marking it as failed. The delay uses exponential backoff based on elapsed time since the task first started, capped at 24 hours.
 
   For more information see [MDL-79763](https://tracker.moodle.org/browse/MDL-79763)
+
+### mod_assign
+
+#### Changed
+
+- The `assign::calculate_penalised_grade()` method now applies grade-item scaling so the returned value now matches the `finalgrade` stored in the gradebook. It also accepts an optional `\grade_grade $usergraderecord` parameter to avoid redundant database lookups. Callers that previously applied their own grade-item scaling to the returned value should remove it to avoid double scaling.
+
+  For more information see [MDL-88407](https://tracker.moodle.org/browse/MDL-88407)
 
 ## 5.2
 
