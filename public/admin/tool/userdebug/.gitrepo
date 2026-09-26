@@ -1,2 +1,2 @@
-    PLUGIN_STATE_TYPE=vcstag
+    PLUGIN_STATE_TYPE=version
     PLUGIN_DESIRED_STATE=v5.0.3
