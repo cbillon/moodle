@@ -1,2 +1,3 @@
-    PLUGIN_STATE_TYPE=versionnumber
-    PLUGIN_DESIRED_STATE=https://marketplace.moodle.com/api/plugins/mod_hvp/versions/2026090101/download
+    PLUGIN_STATE_TYPE=version
+    PLUGIN_DESIRED_STATE=null
+null
