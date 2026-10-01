@@ -1,0 +1,231 @@
+/* Light visual polish for tool_automate's admin pages. Everything is scoped to
+   body.tool_automate-page (added per page via $PAGE->add_body_class) so none of
+   it leaks into the rest of Moodle. */
+
+.tool_automate-page .tool_automate_back {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+}
+
+/* Listing tables: framed, rounded, with a tinted header and row hover. */
+.tool_automate-page .generaltable {
+    width: 100%;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+.tool_automate-page .generaltable th,
+.tool_automate-page .generaltable td {
+    padding: 0.6rem 0.75rem;
+    vertical-align: middle;
+}
+
+.tool_automate-page .generaltable thead th {
+    background: #f1f3f5;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+}
+
+.tool_automate-page .generaltable tbody td {
+    border-top: 1px solid #eef0f2;
+}
+
+.tool_automate-page .generaltable tbody tr:hover {
+    background: #f6f8fa;
+}
+
+/* Let wide tables scroll instead of overflowing on small screens. */
+@media (max-width: 768px) {
+    .tool_automate-page .generaltable {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+/* Form controls: softer borders, rounded corners and a clear focus ring on the
+   dropdowns and the searchable backup-file picker. */
+.tool_automate-page select,
+.tool_automate-page input[type="text"],
+.tool_automate-page input[type="search"],
+.tool_automate-page input[type="number"],
+.tool_automate-page textarea {
+    border: 1px solid #ced4da;
+    border-radius: 0.4rem;
+    padding: 0.4rem 0.55rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.tool_automate-page select:focus,
+.tool_automate-page input:focus,
+.tool_automate-page textarea:focus {
+    border-color: #0f6cbf;
+    box-shadow: 0 0 0 0.2rem #cfe2ff;
+    outline: 0;
+}
+
+/* Source directory: a framed panel echoing the listing tables (same border,
+   radius and tinted strip) so the resolved path reads as a labelled value. */
+.tool_automate-page .tool_automate_sourcedir {
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.tool_automate-page .tool_automate_sourcedir_label {
+    background: #f1f3f5;
+    border-bottom: 1px solid #dee2e6;
+    padding: 0.45rem 0.75rem;
+    font-weight: 600;
+}
+
+.tool_automate-page .tool_automate_sourcedir_path {
+    display: block;
+    padding: 0.55rem 0.75rem;
+    font-family: monospace;
+    word-break: break-all;
+    color: #0f6cbf;
+    background: #fff;
+}
+
+/* Source-directory readability badge. Sits inline after the "Default: Empty"
+   line, so it is emphasised against that muted text with a tinted pill. */
+.tool_automate_dirstatus {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-left: 0.5rem;
+    padding: 0.15rem 0.55rem;
+    border: 1px solid transparent;
+    border-radius: 0.4rem;
+    font-weight: 700;
+}
+
+.tool_automate_dirstatus.text-success {
+    background: #e8f5ee;
+    border-color: #b7e0c6;
+}
+
+.tool_automate_dirstatus.text-danger {
+    background: #fdecea;
+    border-color: #f5c6cb;
+}
+
+/* Queued / skipped file lists on the restore page render as chips. */
+.tool_automate-page .tool_automate_restore_list ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tool_automate-page .tool_automate_restore_list li {
+    border: 1px solid #dee2e6;
+    border-radius: 0.4rem;
+    background: #f8f9fa;
+    padding: 0.25rem 0.6rem;
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+/* Bulk restore: the backups table is the file selector (checkbox per row). */
+.tool_automate-page .tool_automate_searchrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.tool_automate-page .tool_automate_backupsearch {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 420px;
+}
+
+.tool_automate-page .tool_automate_backups_table .tool_automate_backupcheck {
+    width: 2.5rem;
+    text-align: center;
+}
+
+.tool_automate-page .tool_automate_backups_table td.tool_automate_backupname {
+    font-family: monospace;
+    word-break: break-all;
+}
+
+.tool_automate-page .tool_automate_backups_table td.tool_automate_backupsize {
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Keep a large repository scannable: scroll the backups in a fixed-height pane
+   with the header pinned, instead of letting the table run the full page. */
+.tool_automate-page .tool_automate_backups_scroll {
+    max-height: 22rem;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+}
+
+.tool_automate-page .tool_automate_backups_scroll .generaltable {
+    margin-bottom: 0;
+}
+
+.tool_automate-page .tool_automate_backups_scroll thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.tool_automate-page .tool_automate_restore_nomatch {
+    margin-top: 0.5rem;
+    color: #6c757d;
+}
+
+/* Files selected under a previous search that the current result set no longer
+   shows: rendered as real, visible checkboxes so nothing is queued unseen. */
+.tool_automate-page .tool_automate_selected_other {
+    margin: 0.75rem 0;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    background: #f8f9fa;
+}
+
+.tool_automate-page .tool_automate_selected_list {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.tool_automate-page .tool_automate_selected_list li {
+    font-family: monospace;
+    word-break: break-all;
+}
+
+.tool_automate-page .tool_automate_field {
+    margin-top: 1rem;
+    max-width: 420px;
+}
+
+/* Target category: a wider, full-width dropdown that lines up with the table
+   above rather than the cramped default picker width. */
+.tool_automate-page .tool_automate_categoryfield {
+    max-width: 560px;
+}
+
+.tool_automate-page select.tool_automate_categoryselect {
+    width: 100%;
+    height: auto;
+    min-height: 2.5rem;
+    padding-right: 2rem;
+}
+
+.tool_automate-page .tool_automate_restore_actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 1.1rem;
+}
