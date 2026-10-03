@@ -1,3 +1,2 @@
-    PLUGIN_STATE_TYPE=version
-    PLUGIN_DESIRED_STATE=null
-null
+    PLUGIN_STATE_TYPE=versionnumber
+    PLUGIN_DESIRED_STATE=https://marketplace.moodle.com/api/plugins/tool_clearbackupfiles/versions/2026062300/download
